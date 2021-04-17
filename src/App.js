@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React from 'react'
+
+import KeyBoard from './KeyBoard'
+import DrumManager from './DrumManager'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends React.Component {
 
-export default App;
+	constructor(props) {
+		super(props)
+		this.state = {
+			isOn: true
+		}
+		this.onNewsletterChange = this.onNewsletterChange.bind(this)
+	}
+
+	onNewsletterChange() {
+		this.setState({
+			isOn: !this.state.isOn
+		})
+	}
+
+	render() {
+		return (
+			<div className="App">
+					<KeyBoard />
+					<DrumManager />
+			</div>
+		)
+	}
+}
