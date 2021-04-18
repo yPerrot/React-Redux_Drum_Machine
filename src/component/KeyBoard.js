@@ -10,21 +10,31 @@ class KeyBoard extends React.Component {
         super(props)
 
         this.playSound = this.playSound.bind(this)
-        this.handleKeyPress = this.handleKeyPress.bind(this)
+        this.handleKeyDown = this.handleKeyDown.bind(this)
+        this.handleKeyUp = this.handleKeyUp.bind(this)
     }
 
     componentDidMount() {
-        document.addEventListener('keyup', this.handleKeyPress);
+        document.addEventListener('keydown', this.handleKeyDown);
+        document.addEventListener('keyup', this.handleKeyUp);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('keyup', this.handleKeyPress);
+        document.removeEventListener('keydown', this.handleKeyDown);
+        document.removeEventListener('keyup', this.handleKeyUp);
     }
 
-    handleKeyPress(e) {
+    handleKeyDown(e) {
+        const btn = document.getElementById(e.keyCode.toString())
+        if (btn === null) return
+        btn.classList.add('pushed'); //add
+    }
+
+    handleKeyUp(e) {
         const audioBtn = document.getElementById(e.keyCode.toString())
         if (audioBtn === null) return
         this.playSound(audioBtn)
+        document.getElementById(e.keyCode.toString()).classList.remove('pushed'); //remove
     }
 
     playSound(e) {
