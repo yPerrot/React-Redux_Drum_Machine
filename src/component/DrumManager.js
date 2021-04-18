@@ -1,8 +1,10 @@
 import React from 'react'
-import "../style//App.css"
-import Switch from './Switch'
+import { connect } from "react-redux"
 
-export default class DrumManager extends React.Component {
+import Switch from './Switch'
+import { changeDisplay, changeMain, changeVolume, switchDrum } from '../Store'
+
+class DrumManager extends React.Component {
 
     constructor(props) {
         super(props)
@@ -11,20 +13,30 @@ export default class DrumManager extends React.Component {
             volume: 50, 
             display: "My Area"
         }
-		this.onNewsletterChange = this.onNewsletterChange.bind(this)
-		this.onChangeVolume = this.onChangeVolume.bind(this)
+
+        this.switchDrumLocal = this.switchDrumLocal.bind(this)
+        this.changeVolumeLocal = this.changeVolumeLocal.bind(this)
+        this.changeBankLocal = this.changeBankLocal.bind(this)
 	}
 
-	onNewsletterChange() {
-		this.setState({
-			isOn: !this.state.isOn
-		})
-	}
+    switchDrumLocal() {
+        const txt = !this.props.isOn ? "ON" : "OFF"
+        this.props.switchDrum()
+        this.props.changeDisplay(txt)
+    }
 
-    onChangeVolume(e) {
-        this.setState({
-            volume: e.target.value
-        })
+    changeVolumeLocal(e) {
+        if (!this.props.isOn) return
+        const v = e.target.value
+        this.props.changeVolume(v)
+        this.props.changeDisplay("Volume : " + v)
+    }
+
+    changeBankLocal() {
+        if (!this.props.isOn) return
+        const txt = !this.props.isMainBank ? "Main Bank" : "Secondary Bank"
+        this.props.changeMain()
+        this.props.changeDisplay(txt)
     }
 
     render() {
@@ -33,26 +45,26 @@ export default class DrumManager extends React.Component {
                 <div className="switch-section">
                     <h1>Power</h1>
                     <Switch            
-                        id="newsletter"
-                        checked={this.state.isOn}
-                        onChange={this.onNewsletterChange}
+                        id="power"
+                        checked={this.props.isOn}
+                        onChange={this.switchDrumLocal}
                     />
                 </div>
 
-                <p className="display">{this.state.display}</p>
+                <p className="display">{this.props.display}</p>
 
                 <div className="volume-manager">
-                    <label for="volume">Volume : {this.state.volume}</label>
+                    <label>Volume</label>
                     <br />
-                    <input onChange={this.onChangeVolume} type="range" id="volume" name="volume" min="0" max="100" value={this.state.volume}/>
+                    <input onChange={this.changeVolumeLocal} type="range" name="volume" min="0" max="100" value={this.props.volume}/>
                 </div>
 
                 <div className="switch-section">
                     <h1>Bank</h1>
                     <Switch            
-                        id="newsletter"
-                        checked={this.state.isOn}
-                        onChange={this.onNewsletterChange}
+                        id="bank"
+                        checked={this.props.isMainBank}
+                        onChange={this.changeBankLocal}
                     />
                 </div>
             </div>
@@ -60,3 +72,16 @@ export default class DrumManager extends React.Component {
     }
 
 }
+
+const mapDispatchToProps = {
+	changeMain,
+	changeDisplay,
+    changeVolume,
+	switchDrum,
+}
+
+const mapStateToProps = state => {
+	return state
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrumManager)

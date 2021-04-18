@@ -1,3 +1,9 @@
+/* 
+  TODO: Fix Firefox dot border
+  TODO: Responsive
+  TODO: Volume bar 
+*/
+
 #root {
   display: flex;
   align-items: center;
@@ -10,7 +16,6 @@
 body {
   background-color: #fff5e6;
 }
-
 
 .App {
   display: flex;
