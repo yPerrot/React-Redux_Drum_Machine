@@ -1,8 +1,4 @@
-/* 
-  TODO: Fix Firefox dot border
-  TODO: Responsive
-  TODO: Volume bar 
-*/
+* {outline: none;}
 
 #root {
   display: flex;
