@@ -38,7 +38,8 @@
     box-sizing: border-box;
 }
 .toggle-switch-inner:before {
-    content: "Yes";
+    /* content: "Yes"; */
+    content: "";
     text-transform: uppercase;
     padding-left: 10px;
     background-color: #f90;
@@ -53,7 +54,8 @@
     cursor: not-allowed;
 }
 .toggle-switch-inner:after {
-    content: "No";
+    /* content: "No"; */
+    content: "";
     text-transform: uppercase;
     padding-right: 10px;
     background-color: #bbb;

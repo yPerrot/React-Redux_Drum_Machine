@@ -37,7 +37,7 @@ class DrumManager extends React.Component {
         return (
             <div className="manager">
                 <div className="switch-section">
-                    <h1>Power</h1>
+                    <h2 className="switch-label">Power</h2>
                     <Switch            
                         id="power"
                         checked={this.props.isOn}
@@ -48,13 +48,13 @@ class DrumManager extends React.Component {
                 <p className="display">{this.props.display}</p>
 
                 <div className="volume-manager">
-                    <label>Volume</label>
+                    <label><h2>Volume</h2></label>
                     <br />
                     <input onChange={this.changeVolumeLocal} type="range" name="volume" min="0" max="100" value={this.props.volume}/>
                 </div>
 
                 <div className="switch-section">
-                    <h1>Bank</h1>
+                    <h2 className="switch-label">Bank</h2>
                     <Switch            
                         id="bank"
                         checked={this.props.isMainBank}
