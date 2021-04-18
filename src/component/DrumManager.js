@@ -8,12 +8,6 @@ class DrumManager extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            isOn: true,
-            volume: 50, 
-            display: "My Area"
-        }
-
         this.switchDrumLocal = this.switchDrumLocal.bind(this)
         this.changeVolumeLocal = this.changeVolumeLocal.bind(this)
         this.changeBankLocal = this.changeBankLocal.bind(this)
