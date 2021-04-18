@@ -11,6 +11,7 @@
 
 body {
   background-color: #fff5e6;
+  color: #2D3032;
 }
 
 .App {
@@ -122,7 +123,7 @@ h2 {
   height: 3rem;
   background-color: #804d00;
   border-radius: 5px;
-  
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
