@@ -1,3 +1,5 @@
+import { createStore } from 'redux' 
+
 const CHANGE_MAIN = 'CHANGE_MAIN'
 const CHANGE_DISPLAY = 'CHANGE_DISPLAY'
 const SWITCH = 'SWITCH' 
@@ -40,3 +42,5 @@ export const rootReducer = (state = initState, action) => {
             return state
     }
 }
+
+export const store = createStore(rootReducer)

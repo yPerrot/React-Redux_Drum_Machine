@@ -1,5 +1,5 @@
 import React from 'react'
-import "./App.css"
+import "../style//App.css"
 import Switch from './Switch'
 
 export default class DrumManager extends React.Component {

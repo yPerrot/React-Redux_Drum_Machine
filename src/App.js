@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from "react-redux"
 
-import KeyBoard from './KeyBoard'
-import DrumManager from './DrumManager'
-import { changeDisplay } from './rootReducer'
+import KeyBoard from './component/KeyBoard'
+import DrumManager from './component/DrumManager'
+import { changeDisplay } from './Store'
 
-import './App.css';
+import './style/App.css';
 
 class App extends React.Component {
 
